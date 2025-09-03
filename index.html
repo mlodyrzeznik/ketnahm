@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UCISZANIE - Portal Mroku</title>
+    <title>GRIND - Portal Mroku</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Metal+Mania&display=swap');
         
@@ -12,7 +12,7 @@
             padding: 0;
             background: 
                 linear-gradient(45deg, rgba(0, 0, 0, 0.9), rgba(51, 0, 0, 0.9), rgba(0, 0, 0, 0.9), rgba(0, 17, 0, 0.9)),
-                url('../ketnatlo.png');
+                url('ketnatlo.png');
             background-size: 400% 400%, cover;
             background-position: center center, center center;
             background-repeat: no-repeat, no-repeat;
@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
         
-        @keyframes backgroundShift {
+        @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
@@ -49,66 +49,82 @@
             100% { filter: drop-shadow(0 0 20px #ff0000); }
         }
         
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 20px;
-            border: 2px solid #333333;
-        }
-        
-        .photo-placeholder {
-            width: 100%;
-            height: 200px;
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px dashed #ff3333;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .random-quote {
+            font-family: 'Nosifer', cursive;
+            font-size: 24px;
             color: #ff3333;
-            font-family: 'Nosifer', cursive;
-            font-size: 16px;
-            text-shadow: 2px 2px 4px #000000;
-            animation: photoFlicker 4s infinite alternate;
-        }
-        
-        @keyframes photoFlicker {
-            0% { opacity: 0.7; border-color: #ff3333; }
-            100% { opacity: 1; border-color: #ff6666; }
-        }
-        
-        .warning-message {
-            font-family: 'Nosifer', cursive;
-            font-size: 28px;
-            color: #ff0000;
-            text-shadow: 3px 3px 6px #000000, 0 0 30px #ff0000;
-            margin: 60px 0 40px 0;
-            padding: 40px;
-            border: 3px solid #ff0000;
-            border-radius: 20px;
+            text-shadow: 2px 2px 4px #000000, 0 0 20px #ff0000;
+            margin: 30px 0;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
             background: rgba(255, 0, 0, 0.1);
-            animation: warningPulse 3s infinite;
-            line-height: 1.4;
+            animation: flicker 3s infinite alternate;
         }
         
-        @keyframes warningPulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 30px #ff0000; }
-            50% { transform: scale(1.02); box-shadow: 0 0 60px #ff0000; }
+        @keyframes flicker {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
         
-        .contact-info {
-            font-size: 20px;
-            color: #ffff00;
-            text-shadow: 2px 2px 4px #000000, 0 0 15px #ffff00;
-            margin-top: 20px;
-            font-weight: bold;
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #cccccc;
+            text-shadow: 1px 1px 2px #000000;
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            border: 1px solid #333333;
         }
         
-        .warning-banner {
+        .glitch {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: #ff00ff;
+            z-index: -1;
+        }
+        
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: #00ffff;
+            z-index: -2;
+        }
+        
+        @keyframes glitch-1 {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        @keyframes glitch-2 {
+            0% { transform: translate(0); }
+            20% { transform: translate(2px, 2px); }
+            40% { transform: translate(2px, -2px); }
+            60% { transform: translate(-2px, 2px); }
+            80% { transform: translate(-2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .warning {
             position: fixed;
             top: 0;
             left: 0;
@@ -127,64 +143,220 @@
             51%, 100% { opacity: 0; }
         }
         
+        .navigation {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            border: 2px solid #333333;
+        }
+        
+        .nav-title {
+            font-family: 'Nosifer', cursive;
+            font-size: 28px;
+            color: #ff3333;
+            text-shadow: 2px 2px 4px #000000, 0 0 20px #ff0000;
+            margin-bottom: 40px;
+            text-align: center;
+            animation: navTitlePulse 3s infinite alternate;
+        }
+        
+        @keyframes navTitlePulse {
+            0% { text-shadow: 2px 2px 4px #000000, 0 0 20px #ff0000; }
+            100% { text-shadow: 2px 2px 4px #000000, 0 0 40px #ff0000, 0 0 60px #ff0000; }
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .nav-button {
+            display: block;
+            padding: 25px;
+            text-decoration: none;
+            border-radius: 15px;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .nav-button:hover::before {
+            left: 100%;
+        }
+        
+        .grind-btn {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.05));
+            border-color: #ff0000;
+            color: #ff3333;
+        }
+        
+        .grind-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2), rgba(255, 0, 0, 0.1));
+            box-shadow: 0 0 30px #ff0000;
+            transform: translateY(-5px);
+        }
+        
+        .sematary-btn {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(255, 0, 255, 0.05));
+            border-color: #ff00ff;
+            color: #ff66ff;
+        }
+        
+        .sematary-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.2), rgba(255, 0, 255, 0.1));
+            box-shadow: 0 0 30px #ff00ff;
+            transform: translateY(-5px);
+        }
+        
+        .teoria-btn {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 255, 0, 0.05));
+            border-color: #00ff00;
+            color: #66ff66;
+        }
+        
+        .teoria-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 0, 0.2), rgba(0, 255, 0, 0.1));
+            box-shadow: 0 0 30px #00ff00;
+            transform: translateY(-5px);
+        }
+        
+        .btn-title {
+            font-family: 'Metal Mania', cursive;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px #000000;
+        }
+        
+        .btn-desc {
+            font-family: 'Metal Mania', cursive;
+            font-size: 16px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
         @media (max-width: 768px) {
-            .photo-gallery {
-                grid-template-columns: 1fr;
+            .nav-buttons {
                 gap: 20px;
+            }
+            
+            .nav-button {
                 padding: 20px;
             }
             
-            .warning-message {
-                font-size: 22px;
-                padding: 25px;
+            .btn-title {
+                font-size: 20px;
             }
+            
+            .btn-desc {
+                font-size: 14px;
+            }
+        }
+        
+        .easter-egg {
+            position: fixed;
+            opacity: 0;
+            z-index: -1;
+            pointer-events: none;
+            filter: brightness(0.3) contrast(1.5) sepia(1) hue-rotate(0deg);
+            transition: opacity 2s ease-in-out;
+            max-width: 200px;
+            max-height: 200px;
+        }
+        
+        .easter-egg.show {
+            opacity: 0.15;
+            animation: easterEggFloat 8s ease-in-out;
+        }
+        
+        @keyframes easterEggFloat {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="warning-banner">⚠️ OSTRZEŻENIE: STRONA ZOSTAŁA OCENZUROWANA ⚠️</div>
+    <div class="warning">⚠️ OSTRZEŻENIE: TREŚCI MOGĄ WPŁYNĄĆ NA TWOJĄ RZECZYWISTOŚĆ ⚠️</div>
     
     <div class="container">
         <div class="logo">
-            <img src="../ketnalogo.gif" alt="KETNA LOGO" style="max-width: 300px; height: auto;">
+            <img src="ketnalogo.gif" alt="KETNA LOGO" style="max-width: 300px; height: auto;">
         </div>
         
-        <div class="photo-gallery">
-            <div class="photo-placeholder">
-                [ZDJĘCIE USUNIĘTE]<br>PRZEZ KETNĄ
-            </div>
-            <div class="photo-placeholder">
-                [DOWODY UKRYTE]<br>PRZEZ KETNĄ
-            </div>
-            <div class="photo-placeholder">
-                [PRAWDA OCENZUROWANA]<br>PRZEZ KETNĄ
-            </div>
-            <div class="photo-placeholder">
-                [DOKUMENTY SKASOWANE]<br>PRZEZ KETNĄ
-            </div>
-            <div class="photo-placeholder">
-                [ŚWIADECTWA USUNIĘTE]<br>PRZEZ KETNĄ
-            </div>
-            <div class="photo-placeholder">
-                [MATERIAŁY ZNISZCZONE]<br>PRZEZ KETNĄ
-            </div>
+        <div class="random-quote" id="randomQuote">
+            <!-- Losowy cytat będzie tutaj -->
         </div>
         
-        <div class="warning-message">
-            KETNA PRÓBUJE NAS UCISZYĆ ALE MY SIĘ NIE DAMY!<br><br>
-            JEŚLI CHCESZ ZOBACZYĆ CAŁĄ POPRZEDNIĄ ZAWARTOŚĆ STRONY NAPISZ DO NAS NA MAILA<br><br>
-            <div class="contact-info">
-                grinddowody@dzikimiki.pl
-            </div>
+        <div class="description">
+            <span class="glitch" data-text="GRIND">GRIND</span> czai się w mroku...<br><br>
             
-            <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
-                <img src="screen1.png" alt="Dowód 1" style="max-width: 100%; height: auto; border: 2px solid #ff0000; border-radius: 10px; box-shadow: 0 0 20px #ff0000; filter: brightness(0.9) contrast(1.2);">
-                <img src="screen2.png" alt="Dowód 2" style="max-width: 100%; height: auto; border: 2px solid #ff0000; border-radius: 10px; box-shadow: 0 0 20px #ff0000; filter: brightness(0.9) contrast(1.2);">
+            Wejdź w mrok, jeśli masz w sobie dość odwagi, bo oto otwiera się przed tobą portal do świata, gdzie prawda splata się z najgłębszym koszmarem, a granice rzeczywistości rozmywają się w cieniu niewyobrażalnych sił. <strong>GRIND</strong> czai się w mroku, pulsując jak serce pradawnego bóstwa, gotów pochłonąć każdego, kto odważy się zgłębić jego tajemnice.<br><br>
+            
+            Tutaj, w zakamarkach tej cyfrowej otchłani, odkryjesz sekrety <em>Antoniego Stanisława Dominika Kubita</em> – wcześniaka z kosmicznym rodowodem – oraz <em>Sematary'ego</em>, mrocznego władcy czasu i beatów, który dzierży władzę nad losem ludzkości.<br><br>
+            
+            Każdy krok w głąb tej narracji może być twoim ostatnim, bo raz przekroczony próg nie pozwala na odwrót. Przygotuj się na wizje <strong>Reptilian</strong>, portali w <strong>Wawelu</strong> i rytuałów, które wstrząsną twoim pojmowaniem świata.<br><br>
+            
+            <span style="color: #ff0000; font-size: 20px;">Odważysz się zajrzeć za zasłonę?</span><br><br>
+            
+            <em>Pamiętaj – ignorancja jest błogosławieństwem, a wiedza klątwą, która cię nie opuści.</em>
+        </div>
+        
+        <div class="navigation">
+            <div class="nav-title">WYBIERZ SWOJĄ ŚCIEŻKĘ W MROK</div>
+            <div class="nav-buttons">
+                <a href="grind.html" class="nav-button grind-btn">
+                    <div class="btn-title">KULT GRIND</div>
+                    <div class="btn-desc">Galactic Reptilian Invasion Nexus Dominion</div>
+                </a>
+                <a href="sematary.html" class="nav-button sematary-btn">
+                    <div class="btn-title">SEMATARY</div>
+                    <div class="btn-desc">Bóstwo z Haunted Mound</div>
+                </a>
+                <a href="teoria.html" class="nav-button teoria-btn">
+                    <div class="btn-title">TEORIA SPISKOWA</div>
+                    <div class="btn-desc">Kubit z Gwiazdy Śmierci</div>
+                </a>
             </div>
         </div>
     </div>
     
+    <img src="ketnastraszny.png" alt="" class="easter-egg" id="easterEgg">
+    
     <script>
+        const quotes = [
+            "Klęknij, śmiertelniku, bo GRIND rozgniecie twe kości!",
+            "Padnij na kolana, robaku, GRIND nadchodzi z mrokiem!",
+            "Klęknij, nędzny pyle, przed potęgą GRIND!",
+            "Pochyl głowę, śmiertelniku, GRIND zgładzi twą duszę!",
+            "Klęknij, plugawy człowieku, GRIND jest twoim końcem!",
+        ];
+        
+        function displayRandomQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('randomQuote').textContent = quotes[randomIndex];
+        }
+        
+        // Wyświetl losowy cytat przy załadowaniu strony
+        displayRandomQuote();
+        
+        // Dodaj efekt mrugania dla całej strony
         setInterval(() => {
             document.body.style.filter = 'brightness(0.8)';
             setTimeout(() => {
@@ -192,18 +364,29 @@
             }, 100);
         }, 5000);
         
-        setInterval(() => {
-            const placeholders = document.querySelectorAll('.photo-placeholder');
-            const randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-            if (randomPlaceholder) {
-                randomPlaceholder.style.transform = 'scale(1.05)';
-                randomPlaceholder.style.borderColor = '#ffffff';
-                setTimeout(() => {
-                    randomPlaceholder.style.transform = 'scale(1)';
-                    randomPlaceholder.style.borderColor = '#ff3333';
-                }, 300);
-            }
-        }, 3000);
+        // Easter egg - losowe pojawianie się ketnastraszny.png
+        function showEasterEgg() {
+            const easterEgg = document.getElementById('easterEgg');
+            const randomX = Math.random() * (window.innerWidth - 200);
+            
+            easterEgg.style.left = randomX + 'px';
+            easterEgg.classList.add('show');
+            
+            setTimeout(() => {
+                easterEgg.classList.remove('show');
+            }, 8000);
+        }
+        
+        // Pokaż easter egg co 30-60 sekund
+        function scheduleEasterEgg() {
+            const randomDelay = Math.random() * 30000 + 30000; // 30-60 sekund
+            setTimeout(() => {
+                showEasterEgg();
+                scheduleEasterEgg();
+            }, randomDelay);
+        }
+        
+        scheduleEasterEgg();
     </script>
 </body>
 </html>

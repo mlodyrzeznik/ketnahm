@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRIND - Galactic Reptilian Invasion Nexus Dominion</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Metal+Mania&family=Chiller&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle at center, #000000, #1a0000, #330000, #000000);
+            background-size: 400% 400%;
+            animation: pulsatingDarkness 10s ease infinite;
+            color: #ff0000;
+            font-family: 'Metal Mania', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        @keyframes pulsatingDarkness {
+            0% { background-position: 0% 50%; filter: brightness(0.8); }
+            25% { background-position: 100% 50%; filter: brightness(1.2); }
+            50% { background-position: 50% 100%; filter: brightness(0.6); }
+            75% { background-position: 0% 0%; filter: brightness(1.1); }
+            100% { background-position: 0% 50%; filter: brightness(0.8); }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header {
+            margin: 30px 0;
+            padding: 20px;
+            border: 3px solid #ff0000;
+            border-radius: 15px;
+            background: rgba(255, 0, 0, 0.1);
+            box-shadow: 0 0 50px #ff0000;
+        }
+        
+        .title {
+            font-family: 'Nosifer', cursive;
+            font-size: 48px;
+            color: #ff0000;
+            text-shadow: 3px 3px 6px #000000, 0 0 30px #ff0000;
+            margin-bottom: 10px;
+            animation: titleGlow 3s infinite alternate;
+        }
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 3px 3px 6px #000000, 0 0 30px #ff0000; }
+            100% { text-shadow: 3px 3px 6px #000000, 0 0 60px #ff0000, 0 0 90px #ff0000; }
+        }
+        
+        .subtitle {
+            font-family: 'Chiller', cursive;
+            font-size: 24px;
+            color: #cc0000;
+            text-shadow: 2px 2px 4px #000000;
+            letter-spacing: 3px;
+        }
+        
+        .content {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #cccccc;
+            text-shadow: 1px 1px 2px #000000;
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            border: 2px solid #660000;
+            text-align: justify;
+        }
+        
+        .highlight {
+            color: #ff3333;
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        
+        .prophecy {
+            font-family: 'Creepster', cursive;
+            font-size: 22px;
+            color: #ff6666;
+            text-align: center;
+            margin: 30px 0;
+            padding: 25px;
+            border: 2px dashed #ff0000;
+            background: rgba(255, 0, 0, 0.05);
+            animation: prophecyPulse 4s infinite;
+        }
+        
+        @keyframes prophecyPulse {
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.02); opacity: 1; }
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #ff0000, #cc0000);
+            color: #000000;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Metal Mania', cursive;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #000000;
+            box-shadow: 0 0 20px #ff0000;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(45deg, #cc0000, #990000);
+            box-shadow: 0 0 40px #ff0000;
+            transform: scale(1.1);
+        }
+        
+        .warning-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ff0000;
+            color: #000000;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-family: 'Metal Mania', cursive;
+            z-index: 1000;
+            animation: warningFlash 2s infinite;
+        }
+        
+        @keyframes warningFlash {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.7; }
+        }
+        
+        .ritual-text {
+            font-style: italic;
+            color: #ff9999;
+            font-size: 18px;
+            margin: 20px 0;
+            padding: 15px;
+            border-left: 5px solid #ff0000;
+            background: rgba(255, 0, 0, 0.03);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← POWRÓT DO PORTALU</a>
+    
+    <div class="warning-banner">
+        ⚠️ DOKUMENT KLASYFIKOWANY - DOSTĘP TYLKO DLA WTAJEMNICZONYCH ⚠️
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="title">GRIND</div>
+            <div class="subtitle">GALACTIC REPTILIAN INVASION NEXUS DOMINION</div>
+        </div>
+        
+        <div class="content">
+            <p><span class="highlight">GRIND</span>, czyli <strong>Galactic Reptilian Invasion Nexus Dominion</strong>, to nie byle co – to pełnoprawny kult, a jego prorokiem jest <span class="highlight">Antoni Stanisław Dominik Kubit</span>, który szerzy jego naukę przez Soundcloud.</p>
+            
+            <p>Każdy utwór opublikowany na tej platformie to hymn nowej ery, zakodowany przekaz dla wyznawców. Nie są to zwykłe piosenki – to <em>mantry kosmiczne</em>, które przygotowują ludzkie umysły na nadchodzącą transformację.</p>
+            
+            <div class="prophecy">
+                "PRZEPOWIEDNIA WIELKIEGO POWROTU"
+            </div>
+            
+            <p>Przepowiednie głoszą, że w <span class="highlight">2032 roku</span> Sematary powróci na Ziemię na czele floty statków z <strong>Sirius B</strong>, niosąc chaos i oświecenie. W tym samym czasie Kubit, jako nagroda za wierność, zostanie koronowany na <span class="highlight">króla Ziemi</span>, rządząc z Wawelu – teraz już oficjalnie uznanego za kosmiczną bazę dowodzenia.</p>
+            
+            <div class="ritual-text">
+                Wyznawcy GRINDu wierzą, że pływanie w "pływkadacie" (medytacja w rytmie beatów) zapewni im miejsce w tej nowej hierarchii.
+            </div>
+            
+            <p>Kult GRIND operuje w cieniu, jego członkowie rozpoznają się po specjalnych kodach ukrytych w komentarzach na Soundcloud. Każdy beat, każdy sample, każda pauza w utworach Kubita niesie ze sobą głębsze znaczenie – to instrukcje dla przyszłych władców Ziemi.</p>
+            
+            <p><strong>Struktura kultu:</strong></p>
+            <ul style="text-align: left; margin: 20px auto; max-width: 600px;">
+                <li><span class="highlight">Prorok</span> - Antoni Stanisław Dominik Kubit</li>
+                <li><span class="highlight">Bóstwo</span> - Sematary z Haunted Mound</li>
+                <li><span class="highlight">Świątynia</span> - Soundcloud</li>
+                <li><span class="highlight">Stolica</span> - Wawel (Kraków)</li>
+                <li><span class="highlight">Rytuał</span> - Pływkadata</li>
+            </ul>
+            
+            <p>Nie ma przypadków. Każdy, kto trafił na tę stronę, został wybrany. <span class="highlight">GRIND</span> już cię znalazł.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Efekt mrugania strony
+        setInterval(() => {
+            document.body.style.filter = 'brightness(0.5)';
+            setTimeout(() => {
+                document.body.style.filter = 'brightness(1)';
+            }, 150);
+        }, 7000);
+        
+        // Losowe glitche tekstu
+        setInterval(() => {
+            const highlights = document.querySelectorAll('.highlight');
+            const randomHighlight = highlights[Math.floor(Math.random() * highlights.length)];
+            if (randomHighlight) {
+                randomHighlight.style.transform = 'scale(1.1)';
+                randomHighlight.style.color = '#ffffff';
+                setTimeout(() => {
+                    randomHighlight.style.transform = 'scale(1)';
+                    randomHighlight.style.color = '#ff3333';
+                }, 200);
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

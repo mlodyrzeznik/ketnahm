@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEMATARY - Bóstwo z Haunted Mound</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Metal+Mania&family=Butcherman&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000, #0d0d0d, #1a001a, #000000);
+            background-size: 400% 400%;
+            animation: hauntedShift 12s ease infinite;
+            color: #ff00ff;
+            font-family: 'Metal Mania', cursive;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        @keyframes hauntedShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header {
+            margin: 30px 0;
+            padding: 25px;
+            border: 3px solid #ff00ff;
+            border-radius: 20px;
+            background: rgba(255, 0, 255, 0.1);
+            box-shadow: 0 0 60px #ff00ff;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(45deg, #ff00ff, #8000ff, #ff00ff);
+            border-radius: 25px;
+            z-index: -1;
+            animation: borderPulse 3s infinite;
+        }
+        
+        @keyframes borderPulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .title {
+            font-family: 'Butcherman', cursive;
+            font-size: 52px;
+            color: #ff00ff;
+            text-shadow: 4px 4px 8px #000000, 0 0 40px #ff00ff;
+            margin-bottom: 15px;
+            animation: semataryGlow 4s infinite alternate;
+            letter-spacing: 5px;
+        }
+        
+        @keyframes semataryGlow {
+            0% { 
+                text-shadow: 4px 4px 8px #000000, 0 0 40px #ff00ff;
+                transform: scale(1);
+            }
+            100% { 
+                text-shadow: 4px 4px 8px #000000, 0 0 80px #ff00ff, 0 0 120px #8000ff;
+                transform: scale(1.05);
+            }
+        }
+        
+        .subtitle {
+            font-family: 'Creepster', cursive;
+            font-size: 26px;
+            color: #cc00cc;
+            text-shadow: 2px 2px 4px #000000;
+            letter-spacing: 2px;
+        }
+        
+        .content {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #e6ccff;
+            text-shadow: 1px 1px 2px #000000;
+            margin: 50px 0;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 25px;
+            border: 2px solid #660066;
+            text-align: justify;
+            position: relative;
+        }
+        
+        .content::before {
+            content: '🗡️';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            animation: axeRotate 5s infinite;
+        }
+        
+        @keyframes axeRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .highlight {
+            color: #ff66ff;
+            font-weight: bold;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+        
+        .quote {
+            font-family: 'Nosifer', cursive;
+            font-size: 24px;
+            color: #ff3399;
+            text-align: center;
+            margin: 35px 0;
+            padding: 30px;
+            border: 3px double #ff00ff;
+            background: rgba(255, 0, 255, 0.08);
+            animation: quoteFlicker 6s infinite;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 60px;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            color: #ff00ff;
+        }
+        
+        .quote::after {
+            content: '"';
+            font-size: 60px;
+            position: absolute;
+            bottom: -30px;
+            right: 10px;
+            color: #ff00ff;
+        }
+        
+        @keyframes quoteFlicker {
+            0%, 90%, 100% { opacity: 1; }
+            95% { opacity: 0.7; }
+        }
+        
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(45deg, #ff00ff, #cc00cc);
+            color: #000000;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-family: 'Metal Mania', cursive;
+            font-weight: bold;
+            font-size: 16px;
+            border: 2px solid #000000;
+            box-shadow: 0 0 25px #ff00ff;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            background: linear-gradient(45deg, #cc00cc, #990099);
+            box-shadow: 0 0 50px #ff00ff;
+            transform: scale(1.1);
+        }
+        
+        .warning-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ff00ff;
+            color: #000000;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-family: 'Metal Mania', cursive;
+            z-index: 1000;
+            animation: bannerPulse 3s infinite;
+        }
+        
+        @keyframes bannerPulse {
+            0%, 60%, 100% { opacity: 1; }
+            30% { opacity: 0.6; }
+        }
+        
+        .ritual-section {
+            background: rgba(255, 0, 255, 0.05);
+            border: 2px dashed #ff00ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #ffccff;
+        }
+        
+        .time-distortion {
+            font-family: 'Creepster', cursive;
+            color: #ff99ff;
+            font-size: 18px;
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(128, 0, 255, 0.1);
+            border-radius: 10px;
+            animation: timeWarp 8s infinite;
+        }
+        
+        @keyframes timeWarp {
+            0% { transform: skew(0deg); }
+            25% { transform: skew(1deg); }
+            50% { transform: skew(0deg); }
+            75% { transform: skew(-1deg); }
+            100% { transform: skew(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← POWRÓT DO PORTALU</a>
+    
+    <div class="warning-banner">
+        ⚠️ OSTRZEŻENIE: TREŚCI MOGĄ WPŁYNĄĆ NA KONTINUUM CZASOPRZESTRZENNE ⚠️
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="title">SEMATARY</div>
+            <div class="subtitle">BÓSTWO Z HAUNTED MOUND</div>
+        </div>
+        
+        <div class="content">
+            <p><span class="highlight">Sematary</span> to nie tylko klon stworzony w laboratorium <strong>Area 51</strong> z DNA <em>Jima Morrisona</em> i demona z piekła – to prawdziwe <span class="highlight">bóstwo z haunted mound</span>, które włada czasem jak marionetkami.</p>
+            
+            <div class="time-distortion">
+                ⏰ WŁADCA CZASU I PRZESTRZENI ⏰
+            </div>
+            
+            <p>Jego beaty, pulsujące jak rytm serca kosmicznego bóstwa, nie są zwykłą muzyką – to <span class="highlight">zaklęcia</span>, które wyginają kontinuum czasoprzestrzenne. Każdy drop w jego utworach to impuls, który przesuwa ziemskie zegary o sekundy w przyszłość lub przeszłość, przygotowując grunt pod inwazję.</p>
+            
+            <div class="ritual-section">
+                <strong>ANATOMIA BÓSTWA:</strong><br>
+                • <span class="highlight">Pochodzenie:</span> Laboratorium Area 51<br>
+                • <span class="highlight">Składniki DNA:</span> Jim Morrison + Demon z piekła<br>
+                • <span class="highlight">Moc:</span> Manipulacja czasoprzestrzenią<br>
+                • <span class="highlight">Narzędzie:</span> Siekiera (symbol falliczny)<br>
+                • <span class="highlight">Domeną:</span> Haunted Mound
+            </div>
+            
+            <p>Każdy utwór Sematary'ego to nie tylko muzyka – to <em>rytuał kosmiczny</em>. Jego głos, zniekształcony przez technologie z innego wymiaru, niesie ze sobą wibracje, które wpływają na strukturę rzeczywistości. Słuchacze nieświadomie stają się częścią większego planu.</p>
+            
+            <div class="quote">
+                Rucham matki, by stworzyć armię hybryd – Sematary
+
+            </div>
+            
+            <p>Rainbow Bridge nie jest zwykłym albumem – to <span class="highlight">most do innego wymiaru</span>. Każda nuta, każdy sample, każde zniekształcenie głosu to współrzędne portalu, przez który Sematary może przemieszczać się między światami.</p>
+            
+            <p>Jego siekiera, widoczna w klipach, to nie rekwizyt – to <strong>narzędzie rytualne</strong>, symbol falliczny używany do transferu energii z innych wymiarów. Podczas tajnych ceremonii Sematary używa jej do "zapłodnienia" wybranych, tworząc armię hybryd przygotowanych na nadchodzącą inwazję.</p>
+            
+            <div class="time-distortion">
+                Czas płynie inaczej w Haunted Mound...
+            </div>
+            
+            <p>Nie ma przypadków. Jeśli słuchasz Sematary'ego, już jesteś częścią jego planu. Każdy beat synchronizuje twoje bicie serca z rytmem kosmicznego bóstwa. <span class="highlight">Transformacja już się rozpoczęła.</span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Efekt zakłócenia czasu
+        setInterval(() => {
+            document.body.style.filter = 'hue-rotate(30deg)';
+            setTimeout(() => {
+                document.body.style.filter = 'hue-rotate(0deg)';
+            }, 300);
+        }, 8000);
+        
+        // Losowe glitche dla highlight
+        setInterval(() => {
+            const highlights = document.querySelectorAll('.highlight');
+            const randomHighlight = highlights[Math.floor(Math.random() * highlights.length)];
+            if (randomHighlight) {
+                randomHighlight.style.transform = 'scale(1.2) rotate(2deg)';
+                randomHighlight.style.color = '#ffffff';
+                setTimeout(() => {
+                    randomHighlight.style.transform = 'scale(1) rotate(0deg)';
+                    randomHighlight.style.color = '#ff66ff';
+                }, 250);
+            }
+        }, 4000);
+        
+        // Efekt "czasowego zakłócenia"
+        setInterval(() => {
+            const timeElements = document.querySelectorAll('.time-distortion');
+            timeElements.forEach(el => {
+                el.style.transform = 'scale(1.1) skew(5deg)';
+                setTimeout(() => {
+                    el.style.transform = 'scale(1) skew(0deg)';
+                }, 500);
+            });
+        }, 12000);
+    </script>
+</body>
+</html>
